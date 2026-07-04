@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+#main{
+    width: 100%;
+
+}
+
+#home{
+    width: 100%;
+    min-height: 100vh;
+}
+
+#nav{
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#nav img{
+    width: 125px;
+}
+
+#nav #right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+
+nav i{
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+    
+    margin-top: 5px;
+}
+#nav a{
+    text-decoration: none;
+    color:#000;
+    font-size: 1.1vw;
+    font-weight: 400;
+    margin-left: 30px;
+    letter-spacing: -1px;
+}
+.menu-icon{
+    width: 26px;
+    height: 18px;
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.menu-icon span{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: #000;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+}
+
+.menu-icon span:nth-child(1){
+    top: 0;
+}
+
+.menu-icon span:nth-child(2){
+    top: 8px;
+}
+
+.menu-icon span:nth-child(3){
+    top: 16px;
+}
+
+/* Hover animation: 3 lines -> X */
+.menu-icon:hover span:nth-child(1){
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.menu-icon:hover span:nth-child(2){
+    opacity: 0;
+}
+
+.menu-icon:hover span:nth-child(3){
+    top: 8px;
+    transform: rotate(-45deg);
+}
+
+
+
+#home #home-main{
+    width: 100%;
+    padding: 15vw 16vw;
+    
+}
+
+#home-main h1{
+    font-size: 1.5vw;
+    font-weight: 400;
+}
+#home-main h2{
+    font-size: 1.5vw;
+    font-weight: 400;
+}
+.headings{
+    display: flex;
+    gap: 20px;
+}
+#home-main .headings h1{
+    font-size: 5.5vw;
+    font-weight: 900;
+    letter-spacing: -3px;
+}
+
+#home-main .headings h2{
+    color: transparent;
+    -webkit-text-stroke: 1px #000;
+    font-size: 5.5vw;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+
+#home-last{
+    padding: 5vw 14vw;
+}
+
+#home-last p{
+    font-size: 1.1vw;
+    font-weight: 400;
+    letter-spacing: -0.9px;
+    
+}
+
+#home-last p::selection{
+    background: #000;
+    color: #fff;
+}
