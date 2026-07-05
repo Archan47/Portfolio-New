@@ -1,58 +1,99 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html, body{
+
+html,
+body {
     height: 100%;
     width: 100%;
     font-family: 'Poppins', sans-serif;
 }
 
-#main{
+#main {
     width: 100%;
 
 }
 
-#home{
+#home {
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
-#nav{
+#nav,
+#home-main,
+#home-last {
+    position: relative;
+    z-index: 1;
+    pointer-events: none; /* let clicks pass through blank space to icons below */
+}
+
+
+#nav *,
+#home-main *,
+#home-last * {
+    pointer-events: auto;
+}
+
+
+.home-icons {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+ 
+.floating-icon {
+    position: absolute;
+    font-size: 2.8vw;
+    pointer-events: auto;
+    cursor: pointer;
+}
+ 
+
+#nav {
     width: 100%;
     padding: 30px 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-#nav img{
+
+#nav img {
     width: 125px;
+    cursor: pointer;
 }
 
-#nav #right{
+#nav #right {
     display: flex;
     align-items: center;
     gap: 20px;
 
 }
 
-nav i{
+nav i {
     font-size: 20px;
     color: #000;
     cursor: pointer;
-    
+
     margin-top: 5px;
 }
-#nav a{
+
+#nav a {
     text-decoration: none;
-    color:#000;
+    color: #000;
     font-size: 1.1vw;
     font-weight: 400;
     margin-left: 30px;
     letter-spacing: -1px;
 }
-.menu-icon{
+
+.menu-icon {
     width: 26px;
     height: 18px;
     position: relative;
@@ -60,7 +101,7 @@ nav i{
     margin-left: 20px;
 }
 
-.menu-icon span{
+.menu-icon span {
     position: absolute;
     left: 0;
     width: 100%;
@@ -70,80 +111,438 @@ nav i{
     transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
 }
 
-.menu-icon span:nth-child(1){
+.menu-icon span:nth-child(1) {
     top: 0;
 }
 
-.menu-icon span:nth-child(2){
+.menu-icon span:nth-child(2) {
     top: 8px;
 }
 
-.menu-icon span:nth-child(3){
+.menu-icon span:nth-child(3) {
     top: 16px;
 }
 
 /* Hover animation: 3 lines -> X */
-.menu-icon:hover span:nth-child(1){
+.menu-icon:hover span:nth-child(1) {
     top: 8px;
     transform: rotate(45deg);
 }
 
-.menu-icon:hover span:nth-child(2){
+.menu-icon:hover span:nth-child(2) {
     opacity: 0;
 }
 
-.menu-icon:hover span:nth-child(3){
+.menu-icon:hover span:nth-child(3) {
     top: 8px;
     transform: rotate(-45deg);
 }
 
 
 
-#home #home-main{
+#home #home-main {
     width: 100%;
-    padding: 15vw 16vw;
-    
+    padding: 8vw 16vw 0;
+
 }
 
-#home-main h1{
+#home-main h1 {
     font-size: 1.5vw;
     font-weight: 400;
 }
-#home-main h2{
+
+#home-main h2 {
     font-size: 1.5vw;
     font-weight: 400;
 }
-.headings{
+
+.headings {
     display: flex;
     gap: 20px;
 }
-#home-main .headings h1{
+
+#home-main .headings h1 {
     font-size: 5.5vw;
     font-weight: 900;
     letter-spacing: -3px;
 }
 
-#home-main .headings h2{
+#home-main .headings h2 {
     color: transparent;
     -webkit-text-stroke: 1px #000;
     font-size: 5.5vw;
     font-weight: 900;
     letter-spacing: -2px;
 }
-
-
-#home-last{
-    padding: 5vw 14vw;
-}
-
-#home-last p{
-    font-size: 1.1vw;
-    font-weight: 400;
-    letter-spacing: -0.9px;
+#home-main .headings h2:hover {
+    color: #000;
+    transition: 0.3s ease-in-out;
+    text-shadow: 0px 0px 10px #000;
+    transform: scale(1.02);
     
 }
 
-#home-last p::selection{
+
+#home-last {
+    padding: 10vw 14vw 0;
+}
+
+#home-last p {
+    font-size: 1.1vw;
+    font-weight: 400;
+    letter-spacing: -0.9px;
+    margin-left: 32px;
+
+}
+
+#home-last p::selection {
     background: #000;
     color: #fff;
+}
+
+
+#feature {
+    padding: 10vw 14vw;
+    position: relative;
+    overflow: visible;
+}
+
+.fheading>h1 {
+    font-size: 3vw;
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1.5;
+}
+
+.fheading>h1:nth-child(2) {
+    color: transparent;
+    -webkit-text-stroke: 0.6px #000;
+    font-weight: 400;
+
+
+}
+
+#fimages {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    margin-top: 5vw;
+}
+
+#fleft {
+    width: 45%;
+    height: inherit;
+    overflow: hidden;
+}
+
+.fleftlm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: inherit;
+}
+
+.fleftlm h1 {
+    font-size: 2.5vw;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 1.5vw 0;
+}
+.fleftlm h{
+   font-size: 1.5vw;
+   font-weight: 400;
+}
+
+.fleftlm h4{
+   opacity: 0.5;
+}
+
+#fright {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 45%;
+    height: inherit;
+}
+
+#fright .images {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    z-index: 1;
+}
+
+
+#fright .images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+#btn-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#btn-div button {
+    padding: 1.2vw 2.5vw;
+    border: 1px solid #c3c3c3;
+    color: #e2dfdf;
+    background-color: #1e1e1e;
+    border-radius: 100px;
+    font-size: 0.9vw;
+    font-weight: 400;
+    cursor: pointer;
+    
+}
+
+button:hover {
+    box-shadow: 0px 0px 10px #000;
+    transition: 0.3s ease-in-out;
+    transform: scale(1.02);
+}
+
+#dev {
+    width: 100%;
+    padding: 5vw 15vw;
+    
+}
+
+#dev h1 {
+    font-size: 3.5vw;
+    width: 60%;
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+#dev p {
+    font-size: 1.2vw;
+    width: 60%;
+    font-weight: 400;
+    margin-top: 1.5vw;
+    letter-spacing: -1px;
+    line-height: 1.5;
+}
+
+#slides {
+    width: 100%;
+    padding: 5vw 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.slide{
+    width: 30%;
+
+}
+
+.slide .img{
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: rgb(130, 214, 130);
+}
+.slide .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slide .tag{
+    padding: 10px 22px;
+    width: fit-content;
+    border-radius: 100px;
+    background-color: #f0efef;
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+.slide h3{
+    font-size: 1.4vw;
+    font-weight: 400;
+    margin: 10px 0;
+    letter-spacing: -0.5px;
+}
+
+/* PASTE THIS at the end of your existing style.css */
+
+/* ================= SKILLS SECTION ================= */
+#skills {
+    width: 100%;
+    padding: 8vw 14vw;
+}
+
+.skills-heading h1 {
+    font-size: 3vw;
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1.5;
+}
+
+.skills-heading h1:nth-child(2) {
+    color: transparent;
+    -webkit-text-stroke: 0.6px #000;
+    font-weight: 400;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+    margin-top: 4vw;
+}
+
+.skill-card {
+    padding: 2.5vw 2vw;
+    border: 1px solid #dcdcdc;
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.skill-card h3 {
+    font-size: 1.8vw;
+    font-weight: 500;
+    margin-bottom: 0.5vw;
+    letter-spacing: -1px;
+}
+
+.skill-card p {
+    font-size: 1vw;
+    opacity: 0.5;
+    font-weight: 400;
+}
+
+/* ================= STATS SECTION ================= */
+#stats {
+    width: 100%;
+    padding: 6vw 14vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: #111;
+}
+
+.stat {
+    text-align: center;
+    color: #fff;
+}
+
+.stat-number {
+    font-size: 4vw;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.stat p {
+    margin-top: 0.8vw;
+    opacity: 0.6;
+    font-size: 1vw;
+    font-weight: 400;
+}
+
+
+/* PASTE THIS at the end of style.css */
+
+#manifesto {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #05060a;
+}
+
+#manifesto-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.manifesto-content {
+    position: relative;
+    z-index: 1;
+    max-width: 68vw;
+    padding: 0 4vw;
+}
+
+.manifesto-text {
+    font-size: 3vw;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #fff;
+}
+
+.manifesto-text span {
+    color: rgba(255, 255, 255, 0.15);
+    transition: color 0.15s linear;
+}
+
+/* ================= CONTACT SECTION ================= */
+#contact {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #0d0d0d;
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+}
+
+.contact-content h1 {
+    font-size: 5vw;
+    font-weight: 700;
+    letter-spacing: -3px;
+    line-height: 1.1;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin-top: 2vw;
+    padding: 1vw 2.5vw;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 400;
+}
+
+.socials {
+    margin-top: 3vw;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.socials a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 400;
 }
