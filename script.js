@@ -37,6 +37,27 @@ Shery.imageEffect(".images", {
     },
 });
 
+(function initHomeBlurBlobs() {
+    const blobs = document.querySelectorAll(".blob");
+    if (!blobs.length) return;
+
+    blobs.forEach((blob) => {
+        function drift() {
+            gsap.to(blob, {
+                x: gsap.utils.random(-60, 60),
+                y: gsap.utils.random(-60, 60),
+                scale: gsap.utils.random(0.9, 1.15),
+                duration: gsap.utils.random(10, 18),
+                ease: "sine.inOut",
+                onComplete: drift, // picks a new random target each time it finishes
+            });
+        }
+        drift();
+    });
+})();
+
+
+
 // PASTE THIS at the end of your existing script.js
 // (after your current Shery/GSAP/ScrollTrigger code)
 
@@ -97,8 +118,6 @@ document.querySelectorAll(".stat-number").forEach((el) => {
     });
 })();
 
-/* ================= MANIFESTO: live shader aurora background ================= */
-// PASTE THIS at the end of script.js
 
 /* ================= MANIFESTO: continuous looping word highlight ================= */
 (function initManifestoText() {
@@ -373,5 +392,57 @@ document.querySelectorAll(".stat-number").forEach((el) => {
 
     icons.forEach((icon) => {
         icon.addEventListener("click", () => throwIcon(icon));
+    });
+})();
+
+
+
+// REPLACE your entire "initProjectsOverlay" function in script.js with this.
+// No more ScrollTrigger/Lenis pinning needed -- just open/close plus
+// arrow-button-driven horizontal scrolling.
+
+/* ================= PROJECTS OVERLAY: horizontal scroll with arrows ================= */
+(function initProjectsOverlay() {
+    const overlay = document.getElementById("projects-overlay");
+    const openBtn = document.getElementById("view-all-btn");
+    const closeBtn = document.getElementById("close-overlay");
+    const track = document.querySelector(".proj-section-container");
+    const leftArrow = document.querySelector(".proj-arrow-left");
+    const rightArrow = document.querySelector(".proj-arrow-right");
+    if (!overlay || !openBtn || !closeBtn || !track) return;
+
+    function openOverlay() {
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeOverlay() {
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    function scrollByCard(direction) {
+        const card = track.querySelector(".proj-card-section");
+        const cardWidth = card ? card.offsetWidth + 40 : 400; // 40 = approx gap
+        const target = track.scrollLeft + direction * cardWidth;
+
+        gsap.to(track, {
+            scrollLeft: target,
+            duration: 0.7,
+            ease: "power3.out", // fast start, gentle glide into place
+        });
+    }
+
+
+    openBtn.addEventListener("click", openOverlay);
+    closeBtn.addEventListener("click", closeOverlay);
+    leftArrow?.addEventListener("click", () => scrollByCard(-1));
+    rightArrow?.addEventListener("click", () => scrollByCard(1));
+
+    document.addEventListener("keydown", (e) => {
+        if (!overlay.classList.contains("active")) return;
+        if (e.key === "Escape") closeOverlay();
+        if (e.key === "ArrowRight") scrollByCard(1);
+        if (e.key === "ArrowLeft") scrollByCard(-1);
     });
 })();
